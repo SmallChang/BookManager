@@ -6,6 +6,8 @@ public class TypeBean {
 	 */
 	private int tid;//分类的id
 	private String name;//分类的名称
+
+
 	public int getTid() {
 		return tid;
 	}

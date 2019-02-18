@@ -13,6 +13,7 @@ public class AdminBean {
 	private String phone;//手机号
 	private int lend_num;//可借阅天数
 	private int max_num;//最大可借数
+
 	public int getAid() {
 		return aid;
 	}

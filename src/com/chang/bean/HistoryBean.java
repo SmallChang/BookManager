@@ -14,6 +14,8 @@ public class HistoryBean {
 	private String begintime;//借阅时间
 	private String endtime;//要还书的世界
 	private int status;//表示借阅状态，1为正在借阅，2是已经还书
+
+
 	public int getHid() {
 		return hid;
 	}
