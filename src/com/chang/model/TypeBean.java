@@ -1,4 +1,4 @@
-package com.chang.bean;
+package com.chang.model;
 
 public class TypeBean {
 	/**

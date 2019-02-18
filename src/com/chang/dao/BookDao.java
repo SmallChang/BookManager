@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import com.chang.bean.AdminBean;
-import com.chang.bean.BookBean;
-import com.chang.bean.HistoryBean;
+import com.chang.model.AdminBean;
+import com.chang.model.BookBean;
+import com.chang.model.HistoryBean;
 import com.chang.util.DBUtil;
 /**
  * 关于图书连接数据库的所有操作的类

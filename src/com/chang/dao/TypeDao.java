@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.chang.bean.TypeBean;
+import com.chang.model.TypeBean;
 import com.chang.util.DBUtil;
 /**
  * 图书分类的类
