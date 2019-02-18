@@ -1,27 +1,25 @@
-package com.rain.servlet;
+package com.chang.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.rain.dao.BookDao;
+import com.chang.dao.TypeDao;
 
 /**
- * Servlet implementation class deleteServlet
+ * Servlet implementation class updateBookTypeServlet
  */
-@WebServlet("/deleteServlet")
-public class deleteServlet extends HttpServlet {
+@WebServlet("/updateBookTypeServlet")
+public class updateBookTypeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public deleteServlet() {
+    public updateBookTypeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,13 +30,6 @@ public class deleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		//删除图书信息
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=UTF-8");
-		int bid = Integer.parseInt(request.getParameter("bid"));
-		BookDao bookdao = new BookDao();
-		bookdao.deleteBook(bid);
-		response.sendRedirect("/books/admin_book.jsp");
 	}
 
 	/**
@@ -46,7 +37,15 @@ public class deleteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+//		doGet(request, response);
+		//修改图书类型信息
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		String name = request.getParameter("name");
+		int tid = Integer.parseInt(request.getParameter("tid"));
+		TypeDao typedao = new TypeDao();
+		typedao.updateTypeBook(tid,name);
+		response.sendRedirect("/books/admin_booktype.jsp");
 	}
 
 }

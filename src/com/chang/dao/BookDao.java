@@ -1,4 +1,4 @@
-package com.rain.dao;
+package com.chang.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,11 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import com.rain.bean.AdminBean;
-import com.rain.bean.BookBean;
-import com.rain.bean.HistoryBean;
-import com.rain.bean.TypeBean;
-import com.rain.util.DBUtil;
+import com.chang.bean.AdminBean;
+import com.chang.bean.BookBean;
+import com.chang.bean.HistoryBean;
+import com.chang.util.DBUtil;
 /**
  * 关于图书连接数据库的所有操作的类
  */

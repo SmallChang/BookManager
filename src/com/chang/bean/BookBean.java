@@ -1,4 +1,4 @@
-package com.rain.bean;
+package com.chang.bean;
 
 public class BookBean {
 	/**

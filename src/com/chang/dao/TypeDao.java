@@ -1,4 +1,4 @@
-package com.rain.dao;
+package com.chang.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.rain.bean.TypeBean;
-import com.rain.util.DBUtil;
+import com.chang.bean.TypeBean;
+import com.chang.util.DBUtil;
 /**
  * 图书分类的类
  */

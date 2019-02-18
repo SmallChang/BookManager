@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page import = "com.rain.bean.TypeBean,com.rain.dao.AdminDao,com.rain.dao.TypeDao,com.rain.bean.BookBean,com.rain.dao.BookDao,com.rain.bean.AdminBean" %>
+<%@ page import = "com.chang.bean.TypeBean,com.chang.dao.AdminDao,com.chang.dao.TypeDao,com.chang.bean.BookBean,com.chang.dao.BookDao,com.chang.bean.AdminBean" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-CN" class="ax-vertical-centered">
 <head>

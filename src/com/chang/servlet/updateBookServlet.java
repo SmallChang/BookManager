@@ -1,7 +1,6 @@
-package com.rain.servlet;
+package com.chang.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,20 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.rain.bean.BookBean;
-import com.rain.dao.BookDao;
+import com.chang.dao.BookDao;
 
 /**
- * Servlet implementation class selectServlet
+ * Servlet implementation class updateBookServlet
  */
-@WebServlet("/selectServlet")
-public class selectServlet extends HttpServlet {
+@WebServlet("/updateBookServlet")
+public class updateBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public selectServlet() {
+    public updateBookServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +31,6 @@ public class selectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
 	}
 
 	/**
@@ -42,24 +39,19 @@ public class selectServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
+		//修改图书信息
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		//因为在管理员界面和读者界面都有查找功能，为了将查找的结果返回正确的页面，设置了tip，tip=1表示管理员界面
-		int tip = Integer.parseInt(request.getParameter("tip"));
+		String card = request.getParameter("card");
 		String name = request.getParameter("name");
+		String type = request.getParameter("type");
+		String autho = request.getParameter("autho");
+		String press = request.getParameter("press");
+		int num = Integer.parseInt(request.getParameter("num"));
+		int bid = Integer.parseInt(request.getParameter("updatebid"));
 		BookDao bookdao = new BookDao();
-		ArrayList<BookBean> data = bookdao.getLikeList(name);
-		//将获取的结果存入请求中
-		request.setAttribute("data", data);
-		String url = "";
-		//转发不同的界面
-		if(tip==1){
-			url = response.encodeURL("admin_book.jsp");
-		}else{
-			url = response.encodeURL("select.jsp");
-		}
-		//将请求转发
-	    request.getRequestDispatcher(url).forward(request, response);
+		bookdao.updateBook(bid,card,name,type,autho,press,num);
+		response.sendRedirect("/books/admin_book.jsp");
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.rain.servlet;
+package com.chang.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.rain.dao.BookDao;
-import com.rain.dao.TypeDao;
+import com.chang.dao.BookDao;
 
 /**
- * Servlet implementation class deleteTypeServlet
+ * Servlet implementation class AddBookServlet
  */
-@WebServlet("/deleteTypeServlet")
-public class deleteTypeServlet extends HttpServlet {
+@WebServlet("/AddBookServlet")
+public class AddBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public deleteTypeServlet() {
+    public AddBookServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,13 +30,6 @@ public class deleteTypeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		//删除图书分类信息
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=UTF-8");
-		int tid = Integer.parseInt(request.getParameter("tid"));
-		TypeDao typedao = new TypeDao();
-		typedao.deleteBookType(tid);
-		response.sendRedirect("/books/admin_booktype.jsp");
 	}
 
 	/**
@@ -45,7 +37,21 @@ public class deleteTypeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+//		doGet(request, response);
+		//设置编码类型
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		//获取要添加图书的信息
+		String card = request.getParameter("card");
+		String name = request.getParameter("name");
+		String type = request.getParameter("type");
+		String autho = request.getParameter("autho");
+		String press = request.getParameter("press");
+		int num = Integer.parseInt(request.getParameter("num"));
+		BookDao bookdao = new BookDao();
+		//调用函数，存入图书
+		bookdao.addBook(card,name,type,autho,press,num);
+		response.sendRedirect("/books/admin_book.jsp");
 	}
 
 }

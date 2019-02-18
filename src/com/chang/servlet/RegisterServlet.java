@@ -1,25 +1,26 @@
-package com.rain.servlet;
+package com.chang.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.rain.dao.AdminDao;
+import com.chang.dao.AdminDao;
 
 /**
- * Servlet implementation class AddUserServlet
+ * Servlet implementation class RegisterServlet
  */
-@WebServlet("/AddUserServlet")
-public class AddUserServlet extends HttpServlet {
+@WebServlet("/RegisterServlet")
+public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddUserServlet() {
+    public RegisterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,22 +39,21 @@ public class AddUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
-		//设置编码类型
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		//获取要添加的读者的信息
+		//获取注册信息
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
-		int lend_num = Integer.parseInt(request.getParameter("lend_num"));
-		int max_num = Integer.parseInt(request.getParameter("max_num"));
-	
+		int lend_num = 30;
+		int max_num = 5;
 		AdminDao userdao = new AdminDao();
-		//调用函数添加读者信息
+		//将注册信息存入数据库，再返回登录
 		userdao.Register(username,password,name,email,phone,lend_num,max_num);
-        response.sendRedirect("/books/admin_user.jsp");
+        response.sendRedirect("/books/login.jsp");
+		
 	}
 
 }

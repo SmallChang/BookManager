@@ -1,4 +1,4 @@
-package com.rain.util;
+package com.chang.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

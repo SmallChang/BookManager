@@ -1,4 +1,4 @@
-package com.rain.dao;
+package com.chang.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,9 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.rain.bean.AdminBean;
-import com.rain.bean.BookBean;
-import com.rain.util.DBUtil;
+import com.chang.bean.AdminBean;
+import com.chang.util.DBUtil;
 /**
  * 有关读者账号的连接数据库操作，登录验证，注册，修改账号，修改密码
  */

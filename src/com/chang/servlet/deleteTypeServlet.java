@@ -1,4 +1,4 @@
-package com.rain.servlet;
+package com.chang.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.rain.dao.AdminDao;
+import com.chang.dao.TypeDao;
 
 /**
- * Servlet implementation class updateUserServlet
+ * Servlet implementation class deleteTypeServlet
  */
-@WebServlet("/updateUserServlet")
-public class updateUserServlet extends HttpServlet {
+@WebServlet("/deleteTypeServlet")
+public class deleteTypeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public updateUserServlet() {
+    public deleteTypeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,6 +30,13 @@ public class updateUserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//删除图书分类信息
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		int tid = Integer.parseInt(request.getParameter("tid"));
+		TypeDao typedao = new TypeDao();
+		typedao.deleteBookType(tid);
+		response.sendRedirect("/books/admin_booktype.jsp");
 	}
 
 	/**
@@ -37,21 +44,7 @@ public class updateUserServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		doGet(request, response);
-		//修改读者的信息
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=UTF-8");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
-		int lend_num = Integer.parseInt(request.getParameter("lend_num"));
-		int max_num = Integer.parseInt(request.getParameter("max_num"));
-		int aid = Integer.parseInt(request.getParameter("aid"));
-		AdminDao userdao = new AdminDao();
-		userdao.updateUser(aid,username,password,name,email,phone,lend_num,max_num);
-        response.sendRedirect("/books/admin_user.jsp");
+		doGet(request, response);
 	}
 
 }

@@ -1,27 +1,25 @@
-package com.rain.servlet;
+package com.chang.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.rain.dao.BookDao;
+import com.chang.dao.TypeDao;
 
 /**
- * Servlet implementation class updateBookServlet
+ * Servlet implementation class AddBookTypeServlet
  */
-@WebServlet("/updateBookServlet")
-public class updateBookServlet extends HttpServlet {
+@WebServlet("/AddBookTypeServlet")
+public class AddBookTypeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public updateBookServlet() {
+    public AddBookTypeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,19 +38,15 @@ public class updateBookServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
-		//修改图书信息
+		//设置编码类型
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		String card = request.getParameter("card");
+		//获取图书分类的名称
 		String name = request.getParameter("name");
-		String type = request.getParameter("type");
-		String autho = request.getParameter("autho");
-		String press = request.getParameter("press");
-		int num = Integer.parseInt(request.getParameter("num"));
-		int bid = Integer.parseInt(request.getParameter("updatebid"));
-		BookDao bookdao = new BookDao();
-		bookdao.updateBook(bid,card,name,type,autho,press,num);
-		response.sendRedirect("/books/admin_book.jsp");
+		TypeDao typedao = new TypeDao();
+		//调用函数存入图书分类信息
+		typedao.addBookType(name);
+		response.sendRedirect("/books/admin_booktype.jsp");
 	}
 
 }

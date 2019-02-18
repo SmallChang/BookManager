@@ -1,4 +1,4 @@
-package com.rain.servlet;
+package com.chang.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.rain.bean.AdminBean;
-import com.rain.dao.AdminDao;
+import com.chang.bean.AdminBean;
+import com.chang.dao.AdminDao;
 
 /**
  * Servlet implementation class LoginServlet
